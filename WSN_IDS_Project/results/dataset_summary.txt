@@ -1,0 +1,46 @@
+
+--- DATASET SHAPE ---
+Rows: 10000, Columns: 18
+
+--- COLUMN NAMES ---
+['Node_ID', 'Timestamp', 'X_Coordinate', 'Y_Coordinate', 'Z_Coordinate', 'Initial_Energy', 'Residual_Energy', 'Transmission_Power', 'Signal_Strength', 'Noise_Level', 'Energy_Consumption', 'Packet_Loss_Rate', 'Network_Lifetime', 'Optimization_Algorithm', 'Adaptive_Learning_Rate', 'Temperature', 'Humidity', 'Detection_Accuracy']
+
+--- DATA TYPES ---
+Node_ID                     int64
+Timestamp                     str
+X_Coordinate              float64
+Y_Coordinate              float64
+Z_Coordinate              float64
+Initial_Energy            float64
+Residual_Energy           float64
+Transmission_Power        float64
+Signal_Strength           float64
+Noise_Level               float64
+Energy_Consumption        float64
+Packet_Loss_Rate          float64
+Network_Lifetime          float64
+Optimization_Algorithm      int64
+Adaptive_Learning_Rate    float64
+Temperature               float64
+Humidity                  float64
+Detection_Accuracy        float64
+dtype: object
+
+--- MISSING VALUES ---
+No missing values found.
+
+--- CLASS DISTRIBUTION ---
+Assumed Target Column: 'Detection_Accuracy'
+Detection_Accuracy
+87.514713    1
+77.116681    1
+82.314390    1
+74.914709    1
+80.789951    1
+            ..
+83.233597    1
+86.987753    1
+86.615706    1
+75.238882    1
+71.664645    1
+Name: count, Length: 10000, dtype: int64

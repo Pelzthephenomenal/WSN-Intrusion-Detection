@@ -1,0 +1,41 @@
+=== PHASE 4 MODEL TRAINING REPORTS ===
+
+--- Decision Tree ---
+Accuracy: 0.9940
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99      1020
+           1       0.99      0.99      0.99       980
+
+    accuracy                           0.99      2000
+   macro avg       0.99      0.99      0.99      2000
+weighted avg       0.99      0.99      0.99      2000
+
+
+--- Gaussian Naive Bayes ---
+Accuracy: 0.7135
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.72      0.72      0.72      1020
+           1       0.71      0.71      0.71       980
+
+    accuracy                           0.71      2000
+   macro avg       0.71      0.71      0.71      2000
+weighted avg       0.71      0.71      0.71      2000
+
+
+--- K-Nearest Neighbors ---
+Accuracy: 0.7315
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.74      0.74      0.74      1020
+           1       0.73      0.72      0.73       980
+
+    accuracy                           0.73      2000
+   macro avg       0.73      0.73      0.73      2000
+weighted avg       0.73      0.73      0.73      2000
+
+
