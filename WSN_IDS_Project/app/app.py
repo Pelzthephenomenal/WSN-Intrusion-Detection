@@ -6,7 +6,9 @@ from PIL import Image
 import sys
 
 # Ensure src module can be imported
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(BASE_DIR)
+RESULTS_DIR = os.path.join(BASE_DIR, "results")
 from src.predict import load_system_artifacts, predict_network_traffic
 
 # Set Page Config
@@ -54,7 +56,7 @@ def main():
         with col1:
             st.subheader("Class Distribution")
             try:
-                img1 = Image.open(os.path.join("results", "class_distribution.png"))
+                img1 = Image.open(os.path.join(RESULTS_DIR, "class_distribution.png"))
                 st.image(img1, caption="Normal Traffic vs. Malicious Attacks", use_container_width=True)
             except FileNotFoundError:
                 st.warning("Chart not found. Run Phase 2 first.")
@@ -62,7 +64,7 @@ def main():
         with col2:
             st.subheader("Feature Correlation")
             try:
-                img2 = Image.open(os.path.join("results", "correlation_heatmap.png"))
+                img2 = Image.open(os.path.join(RESULTS_DIR, "correlation_heatmap.png"))
                 st.image(img2, caption="Correlation between network features", use_container_width=True)
             except FileNotFoundError:
                 st.warning("Chart not found. Run Phase 2 first.")
@@ -70,7 +72,7 @@ def main():
         st.markdown("---")
         st.subheader("Dataset Summary Text")
         try:
-            with open(os.path.join("results", "dataset_summary.txt"), "r") as f:
+            with open(os.path.join(RESULTS_DIR, "dataset_summary.txt"), "r") as f:
                 st.text(f.read())
         except FileNotFoundError:
             st.warning("Summary not found.")
@@ -81,7 +83,7 @@ def main():
         st.markdown("---")
         
         try:
-            with open(os.path.join("results", "phase4_training_reports.txt"), "r") as f:
+            with open(os.path.join(RESULTS_DIR, "phase4_training_reports.txt"), "r") as f:
                 report_text = f.read()
                 st.text(report_text)
         except FileNotFoundError:
@@ -95,7 +97,7 @@ def main():
         # Display CSV table
         st.subheader("Performance Metrics Table")
         try:
-            comparison_df = pd.read_csv(os.path.join("results", "final_model_comparison.csv"))
+            comparison_df = pd.read_csv(os.path.join(RESULTS_DIR, "final_model_comparison.csv"))
             st.dataframe(comparison_df.style.highlight_max(axis=0, subset=['Accuracy', 'Precision', 'Recall', 'F1 Score'], color='lightgreen'))
         except FileNotFoundError:
             st.warning("Metrics table not found. Run Phase 5 first.")
@@ -111,7 +113,7 @@ def main():
         for metric, col in zip(metrics, columns):
             with col:
                 try:
-                    img = Image.open(os.path.join("results", f"{metric}_comparison.png"))
+                    img = Image.open(os.path.join(RESULTS_DIR, f"{metric}_comparison.png"))
                     st.image(img, caption=f"{metric.capitalize()} Comparison", use_container_width=True)
                 except FileNotFoundError:
                     st.warning(f"{metric} chart not found.")
@@ -129,7 +131,7 @@ def main():
         for name, filename_prefix, col in models:
             with col:
                 try:
-                    cm_img = Image.open(os.path.join("results", f"{filename_prefix}_confusion_matrix.png"))
+                    cm_img = Image.open(os.path.join(RESULTS_DIR, f"{filename_prefix}_confusion_matrix.png"))
                     st.image(cm_img, caption=f"{name} Confusion Matrix", use_container_width=True)
                 except FileNotFoundError:
                     st.warning(f"Confusion matrix for {name} not found.")

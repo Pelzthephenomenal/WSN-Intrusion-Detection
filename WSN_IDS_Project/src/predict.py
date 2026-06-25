@@ -6,6 +6,8 @@ import sys
 
 def load_system_artifacts(model_name="ensemble.pkl", models_dir="models"):
     """Loads the trained model, scaler, and label encoder."""
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    models_dir = os.path.join(BASE_DIR, models_dir)
     try:
         model = joblib.load(os.path.join(models_dir, model_name))
         scaler = joblib.load(os.path.join(models_dir, "scaler.pkl"))
